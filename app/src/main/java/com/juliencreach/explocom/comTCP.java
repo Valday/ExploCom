@@ -1,10 +1,12 @@
 package com.juliencreach.explocom;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketAddress;
@@ -15,6 +17,7 @@ public class comTCP
     private final static int TIMEOUT = 5000;
     private DataOutputStream dataOutputStream;
     private DataInputStream dataInputStream;
+    private static final String TAG = "Message";
 
     private comTCP()
     {
@@ -82,21 +85,56 @@ public class comTCP
 
     private class writeAT extends AsyncTask<Byte[],Void, Void>
     {
+
         @Override
-        protected Void doInBackground(Byte[]... bytes)
+        protected void onPreExecute()
         {
+            super.onPreExecute();
 
             try
             {
                 comTCP.this.dataOutputStream = new DataOutputStream(comTCP.this.socket.getOutputStream());
-                comTCP.this.dataOutputStream.writeInt(bytes[0].length);
-                comTCP.this.dataOutputStream.write(ArrayUtils.toPrimitive(bytes[0]));
+            } catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
+
+        @Override
+        protected Void doInBackground(Byte[]... bytes)
+        {
+            try
+            {
+                byte[] data = ArrayUtils.toPrimitive(bytes[0]);
+                String asup = new String(data);
+                Log.d("Message",asup);
+
+                comTCP.this.dataOutputStream.writeInt(data.length);
+                comTCP.this.dataOutputStream.write(data);
+                comTCP.this.dataOutputStream.flush();
+
             } catch (IOException e)
             {
                 e.printStackTrace();
             }
 
+            Log.d(TAG,"bckgrnd");
+
             return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid)
+        {
+            super.onPostExecute(aVoid);
+
+            try
+            {
+                comTCP.this.dataOutputStream.close();
+            } catch (IOException e)
+            {
+                e.printStackTrace();
+            }
         }
     }
 

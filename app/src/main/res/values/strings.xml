@@ -3,4 +3,5 @@
     <string name="button_connexion">Connexion</string>
     <string name="textView_ip">IP :</string>
     <string name="textView_port">Port :</string>
+    <string name="button_sendMessage">send</string>
 </resources>
