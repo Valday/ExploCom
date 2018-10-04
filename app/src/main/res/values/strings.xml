@@ -4,4 +4,6 @@
     <string name="textView_ip">IP :</string>
     <string name="textView_port">Port :</string>
     <string name="button_sendMessage">send</string>
+    <string name="buttonSendText">Send</string>
+    <string name="buttonSendMessage_hint">message</string>
 </resources>

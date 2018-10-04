@@ -1,5 +1,6 @@
 package com.juliencreach.explocom;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,14 +29,12 @@ public class MainActivity extends AppCompatActivity
 
         comTCP.getInstance().connect(ip, port);
 
+        Intent intent = new Intent(this,sendView.class);
+        startActivity(intent);
+
     }
 
-    public void onClickButtonSendMessage(View view) throws IOException
-    {
-        byte[] message = (((EditText) findViewById(R.id.editText_message)).getText().toString()).getBytes();
 
-        comTCP.getInstance().write(message);
-    }
 
     @Override
     protected void onStop()
