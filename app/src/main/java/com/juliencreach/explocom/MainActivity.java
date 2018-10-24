@@ -1,7 +1,7 @@
 package com.juliencreach.explocom;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -26,8 +26,9 @@ public class MainActivity extends AppCompatActivity
         String ip = ((EditText) findViewById(R.id.editText_IP)).getText().toString();
         String port = ((EditText) findViewById(R.id.editText_Port)).getText().toString();
 
-        comTCP.getInstance().connect(ip, port);
+        comTCP.getInstance().connect(ip, port); //connexion au serveur
 
+        dispatcher.getInstance().start();
     }
 
     public void onClickButtonSendMessage(View view) throws IOException
@@ -41,6 +42,8 @@ public class MainActivity extends AppCompatActivity
     protected void onStop()
     {
         super.onStop();
+
+        dispatcher.getInstance().stopRead();
 
         try
         {

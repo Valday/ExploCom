@@ -6,18 +6,18 @@ import android.util.Log;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketAddress;
 
 public class comTCP
 {
+    private static final String TAG = "Message";
+
     private Socket socket;
     private final static int TIMEOUT = 5000;
     private DataOutputStream dataOutputStream;
     private DataInputStream dataInputStream;
-    private static final String TAG = "Message";
 
     private comTCP()
     {
@@ -31,39 +31,76 @@ public class comTCP
         return Instance;
     }
 
+    /**
+     * Connexion au serveur via socket tcp via une AsyncTask
+     * @param ip
+     * @param port
+     * @throws IOException
+     */
     public void connect(String ip, String port) throws IOException
     {
         connectAT connectAT = new connectAT();
         connectAT.execute(ip, port);
     }
 
-    public byte[] read() throws IOException
+    public byte[] read()
     {
-        this.dataInputStream = new DataInputStream((this.socket.getInputStream()));
-
-        int length = this.dataInputStream.readInt();
-        if(length > 0)
+        try
         {
-            byte[] message = new byte[length];
-            this.dataInputStream.readFully(message,0,message.length);
+            if(this.dataInputStream != null)
+            {
+                int length = this.dataInputStream.readInt();
+                if(length > 0)
+                {
+                    byte[] message = new byte[length];
 
-            return message;
+                    this.dataInputStream.readFully(message,0,message.length);
+
+                    return message;
+                }
+            }
         }
-
+        catch (IOException e)
+        {
+            //e.printStackTrace();
+            Log.d(TAG," ==> Perte de connexion avec le serveur");
+        }
         return null;
     }
 
+    /**
+     * Ecriture d'un message sur la socket TCP via une asyncTask
+     * @param data message a envoyer
+     * @throws IOException
+     */
     public void write(byte[] data) throws IOException
     {
         writeAT writeAT = new writeAT();
-        writeAT.execute(ArrayUtils.toObject(data));
+        writeAT.execute(data);
     }
 
+    /**
+     * Deconnexion
+     * @throws IOException
+     */
     public void disconnect() throws IOException
     {
-        this.socket.close();
+        if(this.socket != null)
+        {
+            this.dataOutputStream.close();
+            this.dataInputStream.close();
+            this.socket.close();
+        }
     }
 
+    public Boolean socketState()
+    {
+        return this.socket.isConnected();
+    }
+
+    /**
+     * Connexion au serveur
+     */
     private class connectAT extends AsyncTask<String, Void, Void>
     {
         @Override
@@ -75,6 +112,12 @@ public class comTCP
                 comTCP.this.socket = new Socket();
                 comTCP.this.socket.connect(socketAddress, TIMEOUT);
 
+                if(comTCP.this.socket.isConnected())
+                {
+                    comTCP.this.dataOutputStream = new DataOutputStream(comTCP.this.socket.getOutputStream());
+                    comTCP.this.dataInputStream = new DataInputStream(comTCP.this.socket.getInputStream());
+                }
+
             } catch (IOException e)
             {
                 e.printStackTrace();
@@ -83,31 +126,18 @@ public class comTCP
         }
     }
 
-    private class writeAT extends AsyncTask<Byte[],Void, Void>
+    /**
+     * Envoi d'un message
+     */
+    private class writeAT extends AsyncTask<byte[],Void, Void>
     {
-
         @Override
-        protected void onPreExecute()
-        {
-            super.onPreExecute();
-
-            try
-            {
-                comTCP.this.dataOutputStream = new DataOutputStream(comTCP.this.socket.getOutputStream());
-            } catch (IOException e)
-            {
-                e.printStackTrace();
-            }
-        }
-
-        @Override
-        protected Void doInBackground(Byte[]... bytes)
+        protected Void doInBackground(byte[]... bytes)
         {
             try
             {
-                byte[] data = ArrayUtils.toPrimitive(bytes[0]);
-                String asup = new String(data);
-                Log.d("Message",asup);
+                byte[] data = bytes[0];
+                Log.d(TAG,new String(data));
 
                 comTCP.this.dataOutputStream.writeInt(data.length);
                 comTCP.this.dataOutputStream.write(data);
@@ -122,20 +152,5 @@ public class comTCP
 
             return null;
         }
-
-        @Override
-        protected void onPostExecute(Void aVoid)
-        {
-            super.onPostExecute(aVoid);
-
-            try
-            {
-                comTCP.this.dataOutputStream.close();
-            } catch (IOException e)
-            {
-                e.printStackTrace();
-            }
-        }
     }
-
 }
