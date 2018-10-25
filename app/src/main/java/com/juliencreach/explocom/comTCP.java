@@ -12,29 +12,67 @@ import java.net.SocketAddress;
 
 public class comTCP
 {
+    /**
+     * Tag pour filtrer dans Logcat
+     */
     private static final String TAG = "Message";
 
+    //region Private Attributs
+
+    /**
+     * Socket de connexion
+     */
     private Socket socket;
+
+    /**
+     * Temps maxi d'attente d'une connexion
+     */
     private final static int TIMEOUT = 5000;
+
+    /**
+     * Flux de sortie sur la socket
+     */
     private DataOutputStream dataOutputStream;
+
+    /**
+     * Flux d'entrée sur la socket
+     */
     private DataInputStream dataInputStream;
 
+    //endregion Private Attributs
+
+    //region Constructor & singleton
+
+    /**
+     * Default constructeur not accessible
+     */
     private comTCP()
     {
 
     }
 
+    /**
+     * Instance de classe
+     */
     private static comTCP Instance = new comTCP();
 
+    /**
+     * Assesseur sur l'instance de classe
+     * @return instance
+     */
     public static comTCP getInstance()
     {
         return Instance;
     }
 
+    //endregion Constructor & singleton
+
+    //region Public Services
+
     /**
      * Connexion au serveur via socket tcp via une AsyncTask
-     * @param ip
-     * @param port
+     * @param ip addresse ip de la cible
+     * @param port port utilisé sur la cible
      * @throws IOException
      */
     public void connect(String ip, String port) throws IOException
@@ -43,6 +81,10 @@ public class comTCP
         connectAT.execute(ip, port);
     }
 
+    /**
+     * Méthode de lecture sur socket
+     * @return data lues
+     */
     public byte[] read()
     {
         try
@@ -93,10 +135,9 @@ public class comTCP
         }
     }
 
-    public Boolean socketState()
-    {
-        return this.socket.isConnected();
-    }
+    //endregion Public Services
+
+    //region AsyncTask
 
     /**
      * Connexion au serveur
@@ -153,4 +194,6 @@ public class comTCP
             return null;
         }
     }
+
+    //endregion AsyncTask
 }

@@ -4,6 +4,6 @@
     <string name="textView_ip">IP :</string>
     <string name="textView_port">Port :</string>
     <string name="button_sendMessage">send</string>
-    <!--<string name="editText_IP_Value">192.168.1.78</string>-->
+    <!--<string name="editText_IP_Value">192.168.1.10</string>-->
     <string name="editText_IP_Value">172.23.2.89</string>
 </resources>

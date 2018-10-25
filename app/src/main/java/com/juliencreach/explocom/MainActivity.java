@@ -6,13 +6,19 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import com.juliencreach.explocom.messages.messageInfo;
+
 import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity
 {
 
+    /**
+     * Tag pour filtrer dans Logcat
+     */
     private static final String TAG = "Message";
 
+    //region Events
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -28,13 +34,13 @@ public class MainActivity extends AppCompatActivity
 
         comTCP.getInstance().connect(ip, port); //connexion au serveur
 
-        dispatcher.getInstance().start();
+        dispatcher.getInstance().start(); // Lancement du thread de lecture
     }
 
     public void onClickButtonSendMessage(View view) throws IOException
     {
-        byte[] message = (((EditText) findViewById(R.id.editText_message)).getText().toString()).getBytes();
-
+        messageInfo msg = new messageInfo(0,((EditText) findViewById(R.id.editText_message)).getText().toString());
+        byte[] message = msg.toByteArray();
         comTCP.getInstance().write(message);
     }
 
@@ -54,4 +60,6 @@ public class MainActivity extends AppCompatActivity
             e.printStackTrace();
         }
     }
+
+    //endregion Events
 }
