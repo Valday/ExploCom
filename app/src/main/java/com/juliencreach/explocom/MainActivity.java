@@ -6,7 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
-import com.juliencreach.explocom.messages.messageInfo;
+import com.juliencreach.explocom.messages.MessageInfo;
 
 import java.io.IOException;
 
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity
 
     public void onClickButtonSendMessage(View view) throws IOException
     {
-        messageInfo msg = new messageInfo(0,((EditText) findViewById(R.id.editText_message)).getText().toString());
+        MessageInfo msg = new MessageInfo((short)0,((EditText) findViewById(R.id.editText_message)).getText().toString());
         byte[] message = msg.toByteArray();
         comTCP.getInstance().write(message);
     }

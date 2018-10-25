@@ -111,8 +111,8 @@ public class comTCP
     }
 
     /**
-     * Ecriture d'un message sur la socket TCP via une asyncTask
-     * @param data message a envoyer
+     * Ecriture d'un Message sur la socket TCP via une asyncTask
+     * @param data Message a envoyer
      * @throws IOException
      */
     public void write(byte[] data) throws IOException
@@ -168,7 +168,7 @@ public class comTCP
     }
 
     /**
-     * Envoi d'un message
+     * Envoi d'un Message
      */
     private class writeAT extends AsyncTask<byte[],Void, Void>
     {

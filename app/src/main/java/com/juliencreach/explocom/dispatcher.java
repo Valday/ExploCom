@@ -2,7 +2,7 @@ package com.juliencreach.explocom;
 
 import android.util.Log;
 
-import com.juliencreach.explocom.messages.messageInfo;
+import com.juliencreach.explocom.messages.MessageInfo;
 
 public class dispatcher extends Thread
 {
@@ -53,7 +53,7 @@ public class dispatcher extends Thread
             byte[] result = comTCP.getInstance().read();
             if(result != null)
             {
-                messageInfo messageInfo = new messageInfo(result);
+                MessageInfo messageInfo = new MessageInfo(result);
                 Log.d("MessageIn",""+messageInfo.toString());
             }
         }
