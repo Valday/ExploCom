@@ -1,6 +1,6 @@
-package com.juliencreach.explocom.messages;
+package com.juliencreach.explocom.divers;
 
-public class MessageVitesse extends Message
+public class template
 {
     //region Private Attributs
     //endregion Private Attributs
@@ -11,9 +11,9 @@ public class MessageVitesse extends Message
     //region Constructors
     //endregion Constructors
 
-    //region Public services
-    //endregion Public services
-
     // region Private services
     //endregion Private services
+
+    //region Public services
+    //endregion Public services
 }

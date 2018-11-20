@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 
 public class messageInfoTest
 {
-    private static final short type = 0;
+    private static final byte type = 0;
     private static final String msg = "azerty";
     private static final byte[] resultExpected = {0,0,97,122,101,114,116,121};
 

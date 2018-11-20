@@ -65,16 +65,205 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginLeft="20dp">
+            android:layout_marginStart="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/textView_messageInfo"
+                android:layout_marginRight="10dp"/>
 
             <EditText
-                android:id="@+id/editText_message"
+                android:id="@+id/editText_messageInfo"
                 android:layout_width="200dp"
                 android:layout_height="50dp"
                 android:hint="message"/>
 
             <Button
-                android:id="@+id/button_sendMessage"
+                android:id="@+id/button_sendMessageInfo"
+                android:layout_width="75dp"
+                android:layout_height="50dp"
+                android:text="@string/button_sendMessage"
+                android:onClick="onClickButtonSendMessage"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/textView_messageEtat"
+                android:layout_marginRight="10dp"/>
+
+            <EditText
+                android:id="@+id/editText_etat"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:hint="etat"/>
+
+            <EditText
+                android:id="@+id/editText_messageEtat"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:hint="message"/>
+
+            <Button
+                android:id="@+id/button_sendMessageEtat"
+                android:layout_width="75dp"
+                android:layout_height="50dp"
+                android:text="@string/button_sendMessage"
+                android:onClick="onClickButtonSendMessage"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/textView_messageControl"
+                android:layout_marginRight="10dp"/>
+
+            <EditText
+                android:id="@+id/editText_x"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:hint="x"/>
+
+            <EditText
+                android:id="@+id/editText_y"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:hint="y"/>
+
+            <EditText
+                android:id="@+id/editText_distance"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:hint="distance"/>
+
+            <EditText
+                android:id="@+id/editText_messageEtat"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:hint="message"/>
+
+            <Button
+                android:id="@+id/button_sendMessageControl"
+                android:layout_width="75dp"
+                android:layout_height="50dp"
+                android:text="@string/button_sendMessage"
+                android:onClick="onClickButtonSendMessage"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/textView_messageVitesse"
+                android:layout_marginRight="10dp"/>
+
+            <EditText
+                android:id="@+id/editText_vitesse"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:hint="vitesse"/>
+
+            <EditText
+                android:id="@+id/editText_messageVitesse"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:hint="message"/>
+
+            <Button
+                android:id="@+id/button_sendMessageVitesse"
+                android:layout_width="75dp"
+                android:layout_height="50dp"
+                android:text="@string/button_sendMessage"
+                android:onClick="onClickButtonSendMessage"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/textView_messageChoixPiste"
+                android:layout_marginRight="10dp"/>
+
+            <EditText
+                android:id="@+id/editText_piste"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:hint="piste"/>
+
+            <EditText
+                android:id="@+id/editText_nbRun"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:hint="nb Run"/>
+
+            <EditText
+                android:id="@+id/editText_nbFail"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:hint="nb Fail"/>
+
+            <EditText
+                android:id="@+id/editText_messagePiste"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:hint="message"/>
+
+            <Button
+                android:id="@+id/button_sendMessageChoixPiste"
+                android:layout_width="75dp"
+                android:layout_height="50dp"
+                android:text="@string/button_sendMessage"
+                android:onClick="onClickButtonSendMessage"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/textView_messageRecuperationPiste"
+                android:layout_marginRight="10dp"/>
+
+            <EditText
+                android:id="@+id/editText_messageRecuperationPistes"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:hint="message"/>
+
+            <Button
+                android:id="@+id/button_sendMessageRecuperationPistes"
                 android:layout_width="75dp"
                 android:layout_height="50dp"
                 android:text="@string/button_sendMessage"

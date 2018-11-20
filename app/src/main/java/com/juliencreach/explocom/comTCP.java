@@ -91,12 +91,12 @@ public class comTCP
         {
             if(this.dataInputStream != null)
             {
-                int length = this.dataInputStream.readInt();
+                int length = this.dataInputStream.available();
                 if(length > 0)
                 {
                     byte[] message = new byte[length];
 
-                    this.dataInputStream.readFully(message,0,message.length);
+                    this.dataInputStream.readFully(message);
 
                     return message;
                 }
@@ -180,7 +180,7 @@ public class comTCP
                 byte[] data = bytes[0];
                 Log.d(TAG,new String(data));
 
-                comTCP.this.dataOutputStream.writeInt(data.length);
+//                comTCP.this.dataOutputStream.writeInt(data.length);
                 comTCP.this.dataOutputStream.write(data);
                 comTCP.this.dataOutputStream.flush();
 

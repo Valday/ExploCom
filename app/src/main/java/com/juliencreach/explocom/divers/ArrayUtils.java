@@ -1,4 +1,4 @@
-package com.juliencreach.explocom;
+package com.juliencreach.explocom.divers;
 
 public class ArrayUtils extends Object
 {

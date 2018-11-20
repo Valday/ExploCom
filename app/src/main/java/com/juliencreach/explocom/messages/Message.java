@@ -1,12 +1,14 @@
 package com.juliencreach.explocom.messages;
 
+import com.juliencreach.explocom.modele.TypeMessages;
+
 import java.nio.ByteBuffer;
 
 public abstract class Message
 {
     //region Protected Attributs
 
-    protected short type;
+    protected TypeMessages type;
 
     protected String message;
 
@@ -14,7 +16,7 @@ public abstract class Message
 
     //region Public Attributs
 
-    public short getType()
+    public TypeMessages getType()
     {
         return type;
     }
@@ -31,9 +33,9 @@ public abstract class Message
     public byte[] toByteArray()
     {
         byte[] message = this.message.getBytes();
-        byte[] toReturn = new byte[2 + message.length]; // byte array de la taille d'un short + taille de la string en byte
+        byte[] toReturn = new byte[1 + message.length]; // byte array de la taille d'un byte + taille de la string en byte
 
-        ByteBuffer.wrap(toReturn).putShort(this.type)
+        ByteBuffer.wrap(toReturn).put(this.type.getIndice())
                 .put(message);
 
         return toReturn;
