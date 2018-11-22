@@ -1,5 +1,7 @@
 package com.juliencreach.explocom.messages;
 
+import android.util.Log;
+
 import com.juliencreach.explocom.R;
 import com.juliencreach.explocom.modele.TypeMessages;
 
@@ -40,9 +42,20 @@ public class MessageChoixPistes extends Message
 
     public MessageChoixPistes(int id, int nbRun, int nbFail)
     {
+        this.type = TypeMessages.CHOIX_PISTE;
         this.id = id;
         this.nbRun = nbRun;
         this.nbFail = nbFail;
+    }
+
+    public MessageChoixPistes(int id, int nbRun, int nbFail, String msg)
+    {
+        this.type = TypeMessages.CHOIX_PISTE;
+        this.id = id;
+        this.nbRun = nbRun;
+        this.nbFail = nbFail;
+        this.message = msg;
+        Log.d("CHOIXPISTE","obj ok");
     }
 
     public MessageChoixPistes(TypeMessages type, int id, int nbRun, int nbFail)

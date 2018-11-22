@@ -1,4 +1,4 @@
-package com.juliencreach.explocom.proxys;
+package com.juliencreach.explocom;
 
 import com.juliencreach.explocom.comTCP;
 import com.juliencreach.explocom.messages.Message;

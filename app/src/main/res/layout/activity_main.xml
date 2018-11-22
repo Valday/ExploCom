@@ -1,280 +1,345 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.juliencreach.explocom.modele.ViewModel" />
+    </data>
 
-
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        tools:context=".MainActivity">
 
-        <LinearLayout
-            android:layout_marginLeft="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollIndicators="right"
+            android:scrollbars="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/textView_ip"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/editText_IP"
-                android:layout_width="170dp"
-                android:layout_height="50dp"
-                android:text="@string/editText_IP_Value"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:orientation="horizontal">
 
-        </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/textView_ip" />
 
-        <LinearLayout
-            android:layout_marginLeft="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                    <EditText
+                        android:id="@+id/editText_IP"
+                        android:layout_width="170dp"
+                        android:layout_height="50dp"
+                        android:text="@string/editText_IP_Value" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/textView_port"/>
+                </LinearLayout>
 
-            <EditText
-                android:id="@+id/editText_Port"
-                android:layout_width="75dp"
-                android:layout_height="50dp"
-                android:text="54321"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:orientation="horizontal">
 
-        </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/textView_port" />
 
-        <Button
-            android:id="@+id/button_connexion"
-            android:layout_width="125dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/button_connexion"
-            android:onClick="onClickButtonConnexion"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+                    <EditText
+                        android:id="@+id/editText_Port"
+                        android:layout_width="75dp"
+                        android:layout_height="50dp"
+                        android:text="54321" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginStart="20dp">
+                </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/textView_messageInfo"
-                android:layout_marginRight="10dp"/>
+                <Button
+                    android:id="@+id/button_connexion"
+                    android:layout_width="125dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:onClick="onClickButtonConnexion"
+                    android:text="@string/button_connexion"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/editText_messageInfo"
-                android:layout_width="200dp"
-                android:layout_height="50dp"
-                android:hint="message"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:hint="binding"
+                    android:text="@{viewModel.testLabel}" />
 
-            <Button
-                android:id="@+id/button_sendMessageInfo"
-                android:layout_width="75dp"
-                android:layout_height="50dp"
-                android:text="@string/button_sendMessage"
-                android:onClick="onClickButtonSendMessage"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:orientation="horizontal">
 
-        </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:text="@string/textView_messageInfo" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginStart="20dp">
+                    <EditText
+                        android:id="@+id/editText_messageInfo"
+                        android:layout_width="200dp"
+                        android:layout_height="50dp"
+                        android:text="info"
+                        android:hint="message" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/textView_messageEtat"
-                android:layout_marginRight="10dp"/>
+                    <Button
+                        android:id="@+id/button_sendMessageInfo"
+                        android:layout_width="75dp"
+                        android:layout_height="50dp"
+                        android:onClick="onClickButtonSendMessageInfo"
+                        android:text="@string/button_sendMessage" />
 
-            <EditText
-                android:id="@+id/editText_etat"
-                android:layout_width="200dp"
-                android:layout_height="50dp"
-                android:hint="etat"/>
+                </LinearLayout>
 
-            <EditText
-                android:id="@+id/editText_messageEtat"
-                android:layout_width="200dp"
-                android:layout_height="50dp"
-                android:hint="message"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:orientation="vertical">
 
-            <Button
-                android:id="@+id/button_sendMessageEtat"
-                android:layout_width="75dp"
-                android:layout_height="50dp"
-                android:text="@string/button_sendMessage"
-                android:onClick="onClickButtonSendMessage"/>
+                    <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-        </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:text="@string/textView_messageEtat" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginStart="20dp">
+                        <EditText
+                            android:id="@+id/editText_etat"
+                            android:layout_width="200dp"
+                            android:layout_height="50dp"
+                            android:hint="etat" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/textView_messageControl"
-                android:layout_marginRight="10dp"/>
+                        <EditText
+                            android:id="@+id/editText_vitG"
+                            android:layout_width="200dp"
+                            android:layout_height="50dp"
+                            android:hint="message" />
 
-            <EditText
-                android:id="@+id/editText_x"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
-                android:hint="x"/>
+                        <EditText
+                            android:id="@+id/editText_vitD"
+                            android:layout_width="200dp"
+                            android:layout_height="50dp"
+                            android:hint="message" />
 
-            <EditText
-                android:id="@+id/editText_y"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
-                android:hint="y"/>
+                    </LinearLayout>
 
-            <EditText
-                android:id="@+id/editText_distance"
-                android:layout_width="200dp"
-                android:layout_height="50dp"
-                android:hint="distance"/>
+                    <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/editText_messageEtat"
-                android:layout_width="200dp"
-                android:layout_height="50dp"
-                android:hint="message"/>
 
-            <Button
-                android:id="@+id/button_sendMessageControl"
-                android:layout_width="75dp"
-                android:layout_height="50dp"
-                android:text="@string/button_sendMessage"
-                android:onClick="onClickButtonSendMessage"/>
 
-        </LinearLayout>
+                        <EditText
+                            android:id="@+id/editText_vitI"
+                            android:layout_width="200dp"
+                            android:layout_height="50dp"
+                            android:hint="message" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginStart="20dp">
+                        <EditText
+                            android:id="@+id/editText_inst"
+                            android:layout_width="200dp"
+                            android:layout_height="50dp"
+                            android:hint="message" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/textView_messageVitesse"
-                android:layout_marginRight="10dp"/>
+                        <EditText
+                            android:id="@+id/editText_messageEtat"
+                            android:layout_width="200dp"
+                            android:layout_height="50dp"
+                            android:hint="message" />
 
-            <EditText
-                android:id="@+id/editText_vitesse"
-                android:layout_width="200dp"
-                android:layout_height="50dp"
-                android:hint="vitesse"/>
+                        <Button
+                            android:id="@+id/button_sendMessageEtat"
+                            android:layout_width="75dp"
+                            android:layout_height="50dp"
+                            android:onClick="onClickButtonSendMessageEtat"
+                            android:text="@string/button_sendMessage" />
 
-            <EditText
-                android:id="@+id/editText_messageVitesse"
-                android:layout_width="200dp"
-                android:layout_height="50dp"
-                android:hint="message"/>
-
-            <Button
-                android:id="@+id/button_sendMessageVitesse"
-                android:layout_width="75dp"
-                android:layout_height="50dp"
-                android:text="@string/button_sendMessage"
-                android:onClick="onClickButtonSendMessage"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginStart="20dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/textView_messageChoixPiste"
-                android:layout_marginRight="10dp"/>
-
-            <EditText
-                android:id="@+id/editText_piste"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
-                android:hint="piste"/>
-
-            <EditText
-                android:id="@+id/editText_nbRun"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
-                android:hint="nb Run"/>
-
-            <EditText
-                android:id="@+id/editText_nbFail"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
-                android:hint="nb Fail"/>
-
-            <EditText
-                android:id="@+id/editText_messagePiste"
-                android:layout_width="200dp"
-                android:layout_height="50dp"
-                android:hint="message"/>
-
-            <Button
-                android:id="@+id/button_sendMessageChoixPiste"
-                android:layout_width="75dp"
-                android:layout_height="50dp"
-                android:text="@string/button_sendMessage"
-                android:onClick="onClickButtonSendMessage"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginStart="20dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/textView_messageRecuperationPiste"
-                android:layout_marginRight="10dp"/>
-
-            <EditText
-                android:id="@+id/editText_messageRecuperationPistes"
-                android:layout_width="200dp"
-                android:layout_height="50dp"
-                android:hint="message"/>
-
-            <Button
-                android:id="@+id/button_sendMessageRecuperationPistes"
-                android:layout_width="75dp"
-                android:layout_height="50dp"
-                android:text="@string/button_sendMessage"
-                android:onClick="onClickButtonSendMessage"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
+                    </LinearLayout>
 
 
 
 
 
-</android.support.constraint.ConstraintLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:text="@string/textView_messageControl" />
+
+                        <EditText
+                            android:id="@+id/editText_x"
+                            android:layout_width="100dp"
+                            android:layout_height="50dp"
+                            android:text="1"
+                            android:hint="x" />
+
+                        <EditText
+                            android:id="@+id/editText_y"
+                            android:layout_width="100dp"
+                            android:layout_height="50dp"
+                            android:text="2"
+                            android:hint="y" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/editText_distance"
+                            android:layout_width="200dp"
+                            android:layout_height="50dp"
+                            android:text="3"
+                            android:hint="distance" />
+
+                        <EditText
+                            android:id="@+id/editText_messageControl"
+                            android:layout_width="200dp"
+                            android:layout_height="50dp"
+                            android:text="control"
+                            android:hint="message" />
+
+                        <Button
+                            android:id="@+id/button_sendMessageControl"
+                            android:layout_width="75dp"
+                            android:layout_height="50dp"
+                            android:onClick="onClickButtonSendMessageControl"
+                            android:text="@string/button_sendMessage" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:text="@string/textView_messageChoixPiste" />
+
+                        <EditText
+                            android:id="@+id/editText_piste"
+                            android:layout_width="100dp"
+                            android:layout_height="50dp"
+                            android:text="1"
+                            android:hint="piste" />
+
+                        <EditText
+                            android:id="@+id/editText_nbRun"
+                            android:layout_width="100dp"
+                            android:layout_height="50dp"
+                            android:text="2"
+                            android:hint="nb Run" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                        <EditText
+                            android:id="@+id/editText_nbFail"
+                            android:layout_width="100dp"
+                            android:layout_height="50dp"
+                            android:text="3"
+                            android:hint="nb Fail" />
+
+                        <EditText
+                            android:id="@+id/editText_messagePiste"
+                            android:layout_width="200dp"
+                            android:layout_height="50dp"
+                            android:text="piste"
+                            android:hint="message" />
+
+                        <Button
+                            android:id="@+id/button_sendMessageChoixPiste"
+                            android:layout_width="75dp"
+                            android:layout_height="50dp"
+                            android:onClick="onClickButtonSendMessageChoixPiste"
+                            android:text="@string/button_sendMessage" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:text="@string/textView_messageRecuperationPiste" />
+
+                    <EditText
+                        android:id="@+id/editText_messageRecuperationPistes"
+                        android:layout_width="200dp"
+                        android:layout_height="50dp"
+                        android:text="1"
+                        android:hint="message" />
+
+                    <Button
+                        android:id="@+id/button_sendMessageRecuperationPistes"
+                        android:layout_width="75dp"
+                        android:layout_height="50dp"
+                        android:onClick="onClickButtonSendMessageRecuperationPiste"
+                        android:text="@string/button_sendMessage" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+    </android.support.constraint.ConstraintLayout>
+</layout>
