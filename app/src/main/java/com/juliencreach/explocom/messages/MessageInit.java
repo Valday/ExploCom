@@ -30,7 +30,8 @@ public class MessageInit extends Message
     public MessageInit()
     {
         this.type = TypeMessages.INIT;
-        this.value = 42;
+        this.value = (byte)42;
+        this.message = "";
     }
 
     public MessageInit(TypeMessages type,byte value, String msg)
@@ -77,14 +78,15 @@ public class MessageInit extends Message
                 .put(this.value)
                 .put(message);
 
-        return super.toByteArray();
+        return toReturn;
     }
 
     @Override
     public String toString()
     {
         return " -> type : "+this.type
-                +"\n value : "+this.message;
+                +"\n value : "+this.value
+                +"\n message : "+this.message;
     }
 
     //endregion Public services

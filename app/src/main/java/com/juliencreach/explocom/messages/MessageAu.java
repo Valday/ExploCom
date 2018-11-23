@@ -28,12 +28,14 @@ public class MessageAu extends Message
     {
         this.type = TypeMessages.AU;
         this.etatAu = etatAu;
+        this.message = "";
     }
 
     public MessageAu(TypeMessages type, byte etatAu)
     {
         this.type = type;
         this.etatAu = etatAu;
+        this.message = "";
     }
 
     public MessageAu(TypeMessages type, byte etatAu, String msg)

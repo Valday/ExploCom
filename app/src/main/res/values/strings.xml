@@ -5,11 +5,14 @@
     <string name="textView_port">Port :</string>
     <string name="button_sendMessage">send</string>
     <!--<string name="editText_IP_Value">192.168.1.10</string>-->
-    <string name="editText_IP_Value">172.23.2.197</string>
+    <!--<string name="editText_IP_Value">172.23.2.197</string>-->
+    <string name="editText_IP_Value">172.17.90.205</string>
     <string name="textView_messageInfo">message Info : </string>
     <string name="textView_messageEtat">message Etat :</string>
     <string name="textView_messageControl">message Control : </string>
     <string name="textView_messageVitesse">message Vitesse : </string>
     <string name="textView_messageChoixPiste">message choix piste : </string>
     <string name="textView_messageRecuperationPiste">message recuperation piste : </string>
+    <string name="button_init">Init</string>
+    <string name="button_manu">Mode manu</string>
 </resources>

@@ -72,6 +72,28 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <Button
+                    android:id="@+id/button_init"
+                    android:layout_width="125dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:onClick="onClickButtonInit"
+                    android:text="@string/button_init"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/button_ModeManu"
+                    android:layout_width="125dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:onClick="onClickButtonModeManu"
+                    android:text="@string/button_manu"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -206,14 +228,14 @@
                             android:id="@+id/editText_x"
                             android:layout_width="100dp"
                             android:layout_height="50dp"
-                            android:text="1"
+                            android:text="0"
                             android:hint="x" />
 
                         <EditText
                             android:id="@+id/editText_y"
                             android:layout_width="100dp"
                             android:layout_height="50dp"
-                            android:text="2"
+                            android:text="100"
                             android:hint="y" />
 
                     </LinearLayout>
@@ -227,7 +249,7 @@
                             android:id="@+id/editText_distance"
                             android:layout_width="200dp"
                             android:layout_height="50dp"
-                            android:text="3"
+                            android:text="50"
                             android:hint="distance" />
 
                         <EditText

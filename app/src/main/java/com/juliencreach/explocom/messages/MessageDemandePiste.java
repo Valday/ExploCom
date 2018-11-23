@@ -22,12 +22,14 @@ public class MessageDemandePiste extends Message
     {
         this.type = TypeMessages.RECUPERATION_PISTES;
         this.cmd = cmd;
+        this.message = "";
     }
 
     public MessageDemandePiste(TypeMessages type, byte cmd)
     {
         this.type = type;
         this.cmd = cmd;
+        this.message = "";
     }
 
     public MessageDemandePiste(TypeMessages type, byte cmd, String msg)

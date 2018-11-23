@@ -30,6 +30,7 @@ public class MessageMode extends Message
     {
         this.type = TypeMessages.MODE;
         this.modeRobot = modeRobot;
+        this.message = "";
     }
     public MessageMode(TypeMessages type, ModeRobot modeRobot)
     {

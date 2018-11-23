@@ -46,6 +46,7 @@ public class MessageChoixPistes extends Message
         this.id = id;
         this.nbRun = nbRun;
         this.nbFail = nbFail;
+        this.message = "";
     }
 
     public MessageChoixPistes(int id, int nbRun, int nbFail, String msg)
@@ -55,7 +56,6 @@ public class MessageChoixPistes extends Message
         this.nbRun = nbRun;
         this.nbFail = nbFail;
         this.message = msg;
-        Log.d("CHOIXPISTE","obj ok");
     }
 
     public MessageChoixPistes(TypeMessages type, int id, int nbRun, int nbFail)
@@ -64,6 +64,7 @@ public class MessageChoixPistes extends Message
         this.id = id;
         this.nbRun = nbRun;
         this.nbFail = nbFail;
+        this.message = "";
     }
 
     public MessageChoixPistes(TypeMessages type, int id, int nbRun, int nbFail, String msg)

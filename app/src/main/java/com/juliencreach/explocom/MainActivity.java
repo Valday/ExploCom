@@ -7,15 +7,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import com.juliencreach.explocom.databinding.ActivityMainBinding;
 import com.juliencreach.explocom.messages.Message;
 import com.juliencreach.explocom.messages.MessageChoixPistes;
 import com.juliencreach.explocom.messages.MessageControl;
-import com.juliencreach.explocom.messages.MessageEtat;
 import com.juliencreach.explocom.messages.MessageInfo;
+import com.juliencreach.explocom.messages.MessageInit;
+import com.juliencreach.explocom.messages.MessageMode;
+import com.juliencreach.explocom.modele.ModeRobot;
 import com.juliencreach.explocom.modele.TypeMessages;
 import com.juliencreach.explocom.modele.ViewModel;
-
-import com.juliencreach.explocom.databinding.ActivityMainBinding;
 
 import java.io.IOException;
 
@@ -86,10 +87,14 @@ public class MainActivity extends AppCompatActivity
 
     public void onClickButtonSendMessageControl(View view)
     {
-        MessageControl msg = new MessageControl(((EditText) findViewById(R.id.editText_x)).getText().toString().getBytes()[0],
-                ((EditText) findViewById(R.id.editText_y)).getText().toString().getBytes()[0],
+        MessageControl msg = new MessageControl((byte)Integer.parseInt(((EditText) findViewById(R.id.editText_x)).getText().toString()),
+                ((byte)Integer.parseInt(((EditText) findViewById(R.id.editText_y)).getText().toString())),
                 Integer.parseInt(((EditText) findViewById(R.id.editText_distance)).getText().toString()),
                 ((EditText) findViewById(R.id.editText_messageControl)).getText().toString());
+
+
+//        byte[] asup = ((EditText) findViewById(R.id.editText_y)).getText().toString().getBytes();
+//        MessageControl msg = new MessageControl((byte)0,(byte)100,50,"");
 
         new Proxy<MessageControl>(msg).Send();
     }
@@ -109,6 +114,21 @@ public class MainActivity extends AppCompatActivity
 
     public void onClickButtonSendMessageRecuperationPiste(View view)
     {
+    }
+
+    public void onClickButtonInit(View view)
+    {
+        MessageInit msg = new MessageInit();
+
+        new Proxy<MessageInit>(msg).Send();
+    }
+
+    public void onClickButtonModeManu(View view)
+    {
+        MessageMode msg = new MessageMode(ModeRobot.MANUEL);
+
+        new Proxy<MessageMode>(msg).Send();
+
     }
 
     //endregion Events
