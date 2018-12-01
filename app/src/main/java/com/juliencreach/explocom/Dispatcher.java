@@ -8,12 +8,13 @@ import com.juliencreach.explocom.messages.MessageInfo;
 import com.juliencreach.explocom.messages.MessageInit;
 import com.juliencreach.explocom.modele.ViewModel;
 
-public class dispatcher extends Thread
+public class Dispatcher
 {
     //region Private Attributs
 
-    private Boolean isRunning = false;
+    private Thread moteur;
 
+    private volatile Thread currentThread = null;
     //endregion Private Attributs
 
     //region Constructor & singleton
@@ -21,7 +22,7 @@ public class dispatcher extends Thread
     /**
      * Default constructeur not accessible
      */
-    private dispatcher()
+    private Dispatcher()
     {
 
     }
@@ -29,13 +30,13 @@ public class dispatcher extends Thread
     /**
      * Instance de classe
      */
-    private static dispatcher Instance = new dispatcher();
+    private static Dispatcher Instance = new Dispatcher();
 
     /**
      * Assesseur sur l'instance de classe
      * @return instance
      */
-    public static dispatcher getInstance()
+    public static Dispatcher getInstance()
     {
         return Instance;
     }
@@ -44,19 +45,23 @@ public class dispatcher extends Thread
 
     //region Public Services
 
-    /**
-     * Thread de lecture sur la socket
-     */
-    @Override
-    public void run()
+    public void StartRead()
     {
-        this.isRunning = true;
+        this.moteur = new Thread(new MonRunable(), "Thread de lecture");
+        this.moteur.start();
+    }
 
-        while (this.isRunning)
+    public class MonRunable implements Runnable
+    {
+        @Override
+        public void run()
         {
-            byte[] result = comTCP.getInstance().read();
-            if(result != null)
+            currentThread = Thread.currentThread();
+            while (!currentThread.isInterrupted())
             {
+                byte[] result = ComTCP.getInstance().read();
+                if(result != null)
+                {
                 switch (result[0])
                 {
                     case -3:
@@ -84,6 +89,7 @@ public class dispatcher extends Thread
                     default:
                         break;
                 }
+                }
             }
         }
     }
@@ -93,7 +99,7 @@ public class dispatcher extends Thread
      */
     public void stopRead()
     {
-        this.isRunning = false;
+        currentThread.interrupt();
     }
 
     //endregion Public Services

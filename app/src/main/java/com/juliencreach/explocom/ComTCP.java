@@ -10,7 +10,7 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketAddress;
 
-public class comTCP
+public class ComTCP
 {
     /**
      * Tag pour filtrer dans Logcat
@@ -46,7 +46,7 @@ public class comTCP
     /**
      * Default constructeur not accessible
      */
-    private comTCP()
+    private ComTCP()
     {
 
     }
@@ -54,13 +54,13 @@ public class comTCP
     /**
      * Instance de classe
      */
-    private static comTCP Instance = new comTCP();
+    private static ComTCP Instance = new ComTCP();
 
     /**
      * Assesseur sur l'instance de classe
      * @return instance
      */
-    public static comTCP getInstance()
+    public static ComTCP getInstance()
     {
         return Instance;
     }
@@ -89,16 +89,19 @@ public class comTCP
     {
         try
         {
-            if(this.dataInputStream != null)
+            if(!this.socket.isClosed())
             {
-                int length = this.dataInputStream.available();
-                if(length > 0)
+                if(this.dataInputStream != null)
                 {
-                    byte[] message = new byte[length];
+                    int length = this.dataInputStream.available();
+                    if(length > 0)
+                    {
+                        byte[] message = new byte[length];
 
-                    this.dataInputStream.readFully(message);
+                        this.dataInputStream.readFully(message);
 
-                    return message;
+                        return message;
+                    }
                 }
             }
         }
@@ -150,13 +153,13 @@ public class comTCP
             try
             {
                 SocketAddress socketAddress = new InetSocketAddress(strings[0],Integer.parseInt(strings[1]));
-                comTCP.this.socket = new Socket();
-                comTCP.this.socket.connect(socketAddress, TIMEOUT);
+                ComTCP.this.socket = new Socket();
+                ComTCP.this.socket.connect(socketAddress, TIMEOUT);
 
-                if(comTCP.this.socket.isConnected())
+                if(ComTCP.this.socket.isConnected())
                 {
-                    comTCP.this.dataOutputStream = new DataOutputStream(comTCP.this.socket.getOutputStream());
-                    comTCP.this.dataInputStream = new DataInputStream(comTCP.this.socket.getInputStream());
+                    ComTCP.this.dataOutputStream = new DataOutputStream(ComTCP.this.socket.getOutputStream());
+                    ComTCP.this.dataInputStream = new DataInputStream(ComTCP.this.socket.getInputStream());
                 }
 
             } catch (IOException e)
@@ -180,9 +183,9 @@ public class comTCP
                 byte[] data = bytes[0];
                 Log.d(TAG,new String(data));
 
-//                comTCP.this.dataOutputStream.writeInt(data.length);
-                comTCP.this.dataOutputStream.write(data);
-                comTCP.this.dataOutputStream.flush();
+//                ComTCP.this.dataOutputStream.writeInt(data.length);
+                ComTCP.this.dataOutputStream.write(data);
+                ComTCP.this.dataOutputStream.flush();
 
             } catch (IOException e)
             {

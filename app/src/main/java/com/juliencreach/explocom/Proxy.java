@@ -1,6 +1,5 @@
 package com.juliencreach.explocom;
 
-import com.juliencreach.explocom.comTCP;
 import com.juliencreach.explocom.messages.Message;
 
 import java.io.IOException;
@@ -18,7 +17,7 @@ public class Proxy<T extends Message>
     {
         try
         {
-            comTCP.getInstance().write(t.toByteArray());
+            ComTCP.getInstance().write(t.toByteArray());
         }
         catch (IOException e)
         {

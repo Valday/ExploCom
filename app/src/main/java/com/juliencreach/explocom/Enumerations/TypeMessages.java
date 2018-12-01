@@ -1,4 +1,4 @@
-package com.juliencreach.explocom.modele;
+package com.juliencreach.explocom.Enumerations;
 
 public enum TypeMessages
 {

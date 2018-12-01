@@ -1,9 +1,6 @@
 package com.juliencreach.explocom.messages;
 
-import android.util.Log;
-
-import com.juliencreach.explocom.R;
-import com.juliencreach.explocom.modele.TypeMessages;
+import com.juliencreach.explocom.Enumerations.TypeMessages;
 
 import java.nio.ByteBuffer;
 import java.util.Arrays;

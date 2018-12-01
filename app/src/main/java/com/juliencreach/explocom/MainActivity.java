@@ -7,15 +7,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import com.juliencreach.explocom.Enumerations.ModeRobot;
+import com.juliencreach.explocom.Enumerations.TypeMessages;
 import com.juliencreach.explocom.databinding.ActivityMainBinding;
-import com.juliencreach.explocom.messages.Message;
 import com.juliencreach.explocom.messages.MessageChoixPistes;
 import com.juliencreach.explocom.messages.MessageControl;
 import com.juliencreach.explocom.messages.MessageInfo;
 import com.juliencreach.explocom.messages.MessageInit;
 import com.juliencreach.explocom.messages.MessageMode;
-import com.juliencreach.explocom.modele.ModeRobot;
-import com.juliencreach.explocom.modele.TypeMessages;
 import com.juliencreach.explocom.modele.ViewModel;
 
 import java.io.IOException;
@@ -49,9 +48,9 @@ public class MainActivity extends AppCompatActivity
         String ip = ((EditText) findViewById(R.id.editText_IP)).getText().toString();
         String port = ((EditText) findViewById(R.id.editText_Port)).getText().toString();
 
-        comTCP.getInstance().connect(ip, port); //connexion au serveur
+        ComTCP.getInstance().connect(ip, port); //connexion au serveur
 
-        dispatcher.getInstance().start(); // Lancement du thread de lecture
+        Dispatcher.getInstance().StartRead(); // Lancement du thread de lecture
     }
 
     public void onClickButtonSendMessageInfo(View view) throws IOException
@@ -66,12 +65,12 @@ public class MainActivity extends AppCompatActivity
     {
         super.onStop();
 
-        dispatcher.getInstance().stopRead();
+        Dispatcher.getInstance().stopRead();
 
         try
         {
             Log.d(TAG,"on stop !");
-            comTCP.getInstance().disconnect();
+            ComTCP.getInstance().disconnect();
         } catch (IOException e)
         {
             e.printStackTrace();
