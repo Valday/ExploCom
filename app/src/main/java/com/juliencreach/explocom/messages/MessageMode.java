@@ -51,6 +51,14 @@ public class MessageMode extends Message
     }
 
 
+    public MessageMode(byte[] data)
+    {
+        MessageMode messageMode = this.toMessageMode(data);
+        this.type = messageMode.getType();
+        this.modeRobot = messageMode.getModeRobot();
+        this.message = this.getMessage();
+    }
+
     //endregion Constructors
 
     //region Public services

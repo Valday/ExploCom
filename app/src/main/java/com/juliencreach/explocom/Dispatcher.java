@@ -6,6 +6,7 @@ import com.juliencreach.explocom.messages.MessageAu;
 import com.juliencreach.explocom.messages.MessageEtat;
 import com.juliencreach.explocom.messages.MessageInfo;
 import com.juliencreach.explocom.messages.MessageInit;
+import com.juliencreach.explocom.messages.MessageMode;
 import com.juliencreach.explocom.modele.ViewModel;
 
 public class Dispatcher
@@ -80,6 +81,12 @@ public class Dispatcher
                         MessageAu messageAu = new MessageAu(result);
                         ViewModel.getInstance().setTestLabel(messageAu.toString());
                         Log.d("MessageIn",""+messageAu.toString());
+                        break;
+                    case 3:
+                        MessageMode messageMode = new MessageMode(result);
+                        ViewModel.getInstance().setTestLabel(messageMode.toString());
+                        Log.d("MessageIn",""+messageMode.toString());
+
                         break;
                     case 6:
                         MessageEtat messageEtat = new MessageEtat(result);
